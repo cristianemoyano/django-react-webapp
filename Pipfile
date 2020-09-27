@@ -12,6 +12,8 @@ pre-commit = "*"
 django = "~=3.1"
 djangorestframework = "~=3.11"
 django-cors-headers = "~=3.5"
+django-ckeditor = "~=6.0"
+pillow = "~=7.2"
 
 [requires]
 python_version = "3.8"
