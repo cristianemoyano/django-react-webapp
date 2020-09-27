@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     # Custom apps
-    'blog',
+    'posts',
+    'categories',
+    'comments',
 ]
 
 MIDDLEWARE = [
