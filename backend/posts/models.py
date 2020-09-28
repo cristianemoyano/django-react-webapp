@@ -13,7 +13,7 @@ class Post(models.Model):
     profile = models.ForeignKey('users.Profile', on_delete=models.PROTECT)
 
     title = models.CharField(max_length=255)
-    image_header = models.ImageField(upload_to='posts/photos')
+    image_header = models.ImageField(upload_to='posts/photos', blank=True)
     post = RichTextField()
 
     created = models.DateTimeField(auto_now_add=True)
@@ -21,7 +21,7 @@ class Post(models.Model):
     is_draft = models.BooleanField(default=True)
     url = models.SlugField(max_length=255, unique=True)
     views = models.PositiveIntegerField(default=0)
-    categories = models.ManyToManyField(Category)
+    categories = models.ManyToManyField(Category, blank=True)
 
     class Meta:
         ordering = ('title',)

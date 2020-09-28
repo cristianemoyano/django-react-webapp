@@ -20,6 +20,7 @@ from django.conf.urls import url
 
 urlpatterns = [
 	path('admin/', admin.site.urls),
-	url(r'^api/posts/$', views.posts_list),
-    url(r'^api/posts/(?P<pk>[0-9]+)$', views.posts_create),
+	url(r'^api/v1/posts/$', views.posts_list),
+	url(r'^api/v1/posts/create/$', views.post_create),
+    url(r'^api/v1/posts/(?P<pk>[0-9]+)$', views.post_detail),
 ]
