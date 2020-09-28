@@ -16,11 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from posts import views
-from django.conf.urls import url
+from django.conf.urls import include, url
 
 urlpatterns = [
 	path('admin/', admin.site.urls),
-	url(r'^api/v1/posts/$', views.posts_list),
-	url(r'^api/v1/posts/create/$', views.post_create),
-    url(r'^api/v1/posts/(?P<pk>[0-9]+)$', views.post_detail),
+    url(r'^', include('posts.urls')),
+    url(
+        r'^api-auth/',
+        include('rest_framework.urls', namespace='rest_framework')
+    ),
 ]
