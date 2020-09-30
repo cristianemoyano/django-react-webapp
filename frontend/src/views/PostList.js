@@ -1,5 +1,5 @@
 import  React, { Component } from  'react';
-import  PostService  from  './PostService';
+import  PostService  from  '../actions/PostService';
 
 const  postService  =  new  PostService();
 
@@ -11,7 +11,6 @@ constructor(props) {
         posts: [],
         nextPageURL:  ''
     };
-    this.nextPage  =  this.nextPage.bind(this);
 }
 
 componentDidMount() {
@@ -23,13 +22,6 @@ componentDidMount() {
 }
 
 
-nextPage(){
-    var  self  =  this;
-    console.log(this.state.nextPageURL);
-    postService.getPostsByURL(this.state.nextPageURL).then((result) => {
-        self.setState({ posts:  result.data, nextPageURL:  result.nextlink})
-    });
-}
 render() {
 
     return (
@@ -49,13 +41,10 @@ render() {
                 <td>{post.title}</td>
                 <td>{post.post}</td>
                 <td>
-                <button  onClick={(e)=>  this.handleDelete(e,post.pk) }> Delete</button>
-                <a  href={"/posts/" + post.pk}> Update</a>
                 </td>
             </tr>)}
             </tbody>
             </table>
-            <button  className="btn btn-primary"  onClick=  {  this.nextPage  }>Next</button>
         </div>
         );
   }
