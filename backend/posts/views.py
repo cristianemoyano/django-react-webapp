@@ -7,7 +7,6 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from posts.models import Post
 from posts.serializers import PostSerializer
-from users.serializers import UserSerializer
 
 
 @api_view(['GET'])

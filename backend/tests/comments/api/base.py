@@ -3,11 +3,12 @@ import pytest
 from django.urls import reverse
 
 from posts.models import Post
+from comments.models import Comment
 from users.models import Profile
 
 
 @pytest.mark.django_db
-class BasePostsApiV1(object):
+class BaseCommentsApiV1(object):
     """ Test module for GET all posts API """
 
     @pytest.fixture
@@ -22,7 +23,12 @@ class BasePostsApiV1(object):
             post='Lorem ipsum',
             user=self.user,
         )
-        self.list_posts_url = reverse('list_posts_api_v1')
-        self.create_post_url = reverse('create_post_api_v1')
-        self.get_post_url = reverse('get_post_api_v1', kwargs={'pk': self.post.pk})
-        self.get_post_url_invalid = reverse('get_post_api_v1', kwargs={'pk': self.post.pk + 9999})
+        self.comment = Comment.objects.create(
+            comment='Comment',
+            post=self.post,
+            user=self.user,
+        )
+        self.list_comments_url = reverse('list_comments_api_v1')
+        self.create_comment_url = reverse('create_comment_api_v1')
+        self.get_comment_url = reverse('get_comment_api_v1', kwargs={'pk': self.comment.pk})
+        self.get_comment_url_invalid = reverse('get_comment_api_v1', kwargs={'pk': self.comment.pk + 9999})
