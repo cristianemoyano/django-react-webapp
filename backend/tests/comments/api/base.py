@@ -9,7 +9,7 @@ from users.models import Profile
 
 @pytest.mark.django_db
 class BaseCommentsApiV1(object):
-    """ Test module for GET all posts API """
+    """ Base Test module for comments API """
 
     @pytest.fixture
     def setup_test(self, request):
