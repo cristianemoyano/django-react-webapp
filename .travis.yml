@@ -1,0 +1,31 @@
+language: python
+
+sudo: true
+
+python:
+  - "3.8"
+
+cache:
+  directories:
+    - $HOME/.cache/pip
+    - $HOME/.npm
+    - $HOME/.nvm
+    - $HOME/.cache/node_modules
+    - $HOME/.cache/venvs
+
+env:
+  - DJANGO_SETTINGS_MODULE=server.test_settings
+
+install:
+  - pipenv install --dev
+  - pip install --upgrade requests
+  - npm install
+
+script:
+  - python manage.py makemigrations --settings=server.test_settings
+  - python manage.py migrate --settings=server.test_settings
+  - coverage run manage.py test --settings=server.test_settings -v 2
+  - npm test
+
+after_success:
+- coveralls
