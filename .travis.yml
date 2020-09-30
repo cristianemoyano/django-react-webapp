@@ -19,7 +19,9 @@ env:
 install:
   - pipenv install --dev
   - pip install --upgrade requests
+  - cd frontend
   - npm install
+  - cd ..
 
 script:
   - python backend/manage.py makemigrations --settings=backend.test_settings
