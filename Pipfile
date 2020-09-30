@@ -9,6 +9,7 @@ ipdb = "*"
 pre-commit = "*"
 pytest = "*"
 pytest-django = "*"
+coveralls = "*"
 
 [packages]
 django = "~=3.1"
