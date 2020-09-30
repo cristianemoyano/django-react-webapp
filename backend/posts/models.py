@@ -10,7 +10,6 @@ class Post(models.Model):
     """Post model."""
 
     user = models.ForeignKey(User, on_delete=models.PROTECT)
-    profile = models.ForeignKey('users.Profile', on_delete=models.PROTECT)
 
     title = models.CharField(max_length=255)
     image_header = models.ImageField(upload_to='posts/photos', blank=True)

@@ -20,9 +20,9 @@ class BaseListPostsApiV1(object):
         self.post = Post.objects.create(
             title='Test',
             post='Lorem ipsum',
-            profile=self.profile,
             user=self.user,
         )
         self.list_posts_url = reverse('list_posts_api_v1')
         self.create_post_url = reverse('create_post_api_v1')
         self.get_post_url = reverse('get_post_api_v1', kwargs={'pk': self.post.pk})
+        self.get_post_url_invalid = reverse('get_post_api_v1', kwargs={'pk': self.post.pk + 9999})
