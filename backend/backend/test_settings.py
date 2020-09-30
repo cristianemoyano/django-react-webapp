@@ -1,4 +1,4 @@
-from server.settings import *
+from backend.settings import *
 
 DATABASES['default'] = {
     'ENGINE': 'django.db.backends.sqlite3',

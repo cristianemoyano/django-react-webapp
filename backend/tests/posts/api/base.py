@@ -8,7 +8,7 @@ from users.models import Profile
 
 @pytest.mark.django_db
 class BasePostsApiV1(object):
-    """ Test module for GET all posts API """
+    """ Base Test module for posts API """
 
     @pytest.fixture
     def setup_test(self, request):

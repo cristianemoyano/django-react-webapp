@@ -14,17 +14,21 @@ cache:
     - $HOME/.cache/venvs
 
 env:
-  - DJANGO_SETTINGS_MODULE=server.test_settings
+  - DJANGO_SETTINGS_MODULE=backend.test_settings
 
 install:
   - pipenv install --dev
   - pip install --upgrade requests
+  - cd frontend
   - npm install
+  - cd ..
 
 script:
-  - python manage.py makemigrations --settings=server.test_settings
-  - python manage.py migrate --settings=server.test_settings
-  - coverage run manage.py test --settings=server.test_settings -v 2
+  - python backend/manage.py makemigrations --settings=backend.test_settings
+  - python backend/manage.py migrate --settings=backend.test_settings
+  - cd backend
+  - pytest
+  - cd ../frontend
   - npm test
 
 after_success:

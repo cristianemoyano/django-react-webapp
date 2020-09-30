@@ -3,7 +3,6 @@ import uuid
 import pytest
 
 from rest_framework.test import APIClient
-from rest_framework.authtoken.models import Token
 
 
 @pytest.fixture(autouse=True)
@@ -40,13 +39,6 @@ def auto_login_user(db, api_client, create_user, test_password):
         api_client.login(username=user.username, password=test_password)
         return api_client, user
     return make_auto_login
-
-
-@pytest.fixture
-def get_or_create_token(db, create_user):
-    user = create_user()
-    token, _ = Token.objects.get_or_create(user=user)
-    return token
 
 
 @pytest.fixture
